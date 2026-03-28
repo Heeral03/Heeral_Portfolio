@@ -267,8 +267,7 @@ class GlitterParticle {
     this.ctx.beginPath();
     this.ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
     this.ctx.fill();
-    this.ctx.shadowBlur = 15;
-    this.ctx.shadowColor = this.color;
+    // Removed expensive shadowBlur for performance
   }
 }
 
@@ -286,7 +285,8 @@ function initGlitter() {
   window.addEventListener('resize', resize);
   resize();
 
-  particles = Array.from({ length: 200 }, () => new GlitterParticle(canvas)); // More particles
+  const particleCount = window.innerWidth < 768 ? 50 : 120;
+  particles = Array.from({ length: particleCount }, () => new GlitterParticle(canvas));
 
   function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -314,10 +314,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const screen = document.getElementById('loading-screen');
     if (screen) {
       screen.style.opacity = '0';
-      setTimeout(() => screen.style.display = 'none', 800);
+      setTimeout(() => screen.style.display = 'none', 400); // reduced from 800 to match css
     }
     initTyping();
-  }, 1200);
+  }, 200); // reduced from 1200
 
   initScrollReveal();
 });

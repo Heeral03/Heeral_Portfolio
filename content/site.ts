@@ -8,10 +8,10 @@ export const site = {
   resume: "/Heeral_Mandolia_Resume_Applied_AI.pdf",
   location: "Jaipur, India",
   description:
-    "Heeral Mandolia is an Applied AI Engineer building LLM systems for healthcare that show their evidence.",
+    "Heeral Mandolia is an Applied AI Engineer specializing in agentic workflows and LLM systems for healthcare that show their evidence.",
   nav: [
-    { label: "Work", href: "/#work" },
     { label: "Experience", href: "/#experience" },
+    { label: "Work", href: "/#work" },
     { label: "Research", href: "/#research" },
     { label: "Notes", href: "/#notes" },
     { label: "Contact", href: "/#contact" },
@@ -19,9 +19,9 @@ export const site = {
 };
 
 export const hero = {
-  eyebrow: "Applied AI Engineer",
-  headline: "I build LLM systems for healthcare that show their evidence.",
-  sub: "Final-year CS at LNMIIT Jaipur. Python, FastAPI, LangGraph, and evaluation loops I actually trust.",
+  eyebrow: "Applied AI Engineer · Agentic Workflows",
+  headline: "I build agentic AI workflows for healthcare that show their evidence.",
+  sub: "Final-year CS at LNMIIT Jaipur. I specialize in Applied AI: LangGraph agents, FastAPI services, and evaluation loops I actually trust.",
   transcript: "Patient: no chest pain, no cough, fever since Monday.",
   claims: [
     { text: "No chest pain", verdict: "supported" },

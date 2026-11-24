@@ -16,6 +16,11 @@ export function ProjectCard({ p, large = false }: { p: Project; large?: boolean 
         </h3>
         {p.status && <StatusChip status={p.status} />}
       </div>
+      {p.tags.length > 0 && (
+        <p className="label mb-3 flex flex-wrap gap-x-3 gap-y-1">
+          {p.tags.map((t) => <span key={t}>{t}</span>)}
+        </p>
+      )}
       <p className={`${large ? "max-w-2xl text-lg md:text-xl text-[var(--ink)]" : "text-[0.95rem]"} mb-5`}>{p.outcome}</p>
       {p.stack.length > 0 && (
         <ul className="mb-6 flex flex-wrap gap-1.5">

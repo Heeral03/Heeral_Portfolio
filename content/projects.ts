@@ -1,10 +1,12 @@
 export type Status = "ongoing" | "research";
+export type Focus = "Healthcare" | "Agentic" | "Applied AI" | "Evaluation" | "Systems";
 
 export type Project = {
   slug: string;
   title: string;
   status?: Status;
   featured?: boolean;
+  tags: Focus[]; // focus areas, shown on cards
   outcome: string; // one line, shown on cards
   summary: string; // short paragraph, shown on detail page
   highlights: string[];
@@ -19,6 +21,7 @@ export const projects: Project[] = [
     title: "Clinotrust",
     status: "ongoing",
     featured: true,
+    tags: ["Healthcare", "Agentic", "Evaluation"],
     outcome:
       "Checks every sentence of an AI-written clinical note against the original consultation, and shows the evidence.",
     summary:
@@ -37,6 +40,7 @@ export const projects: Project[] = [
   {
     slug: "healrag",
     title: "HealRAG",
+    tags: ["Healthcare", "Applied AI", "Evaluation"],
     outcome:
       "Corrective RAG for GDPR, EHDS and NHS rules. It refuses to answer when the evidence is weak.",
     summary:
@@ -56,6 +60,7 @@ export const projects: Project[] = [
   {
     slug: "barney",
     title: "Barney",
+    tags: ["Agentic", "Applied AI", "Evaluation"],
     outcome:
       "A multi-agent shopping assistant that searches stores in parallel and recommends one pick, with reasons.",
     summary:
@@ -72,6 +77,7 @@ export const projects: Project[] = [
   {
     slug: "slotguard",
     title: "SlotGuard",
+    tags: ["Agentic", "Healthcare", "Systems"],
     outcome:
       "A booking engine that cannot double book under load, with a LangGraph agent that books clinic slots in plain language.",
     summary:
@@ -88,6 +94,7 @@ export const projects: Project[] = [
   {
     slug: "stratumgrid",
     title: "StratumGrid",
+    tags: ["Systems", "Agentic"],
     outcome:
       "A resource arbiter that locks warehouse regions as a tree, so a robot and a picker never claim the same space.",
     summary:
@@ -103,6 +110,7 @@ export const projects: Project[] = [
   {
     slug: "xai-guard",
     title: "XAI-Guard",
+    tags: ["Applied AI", "Systems"],
     outcome: "Explainable cyberattack detection on the SWaT water treatment dataset. Team project.",
     summary:
       "An explainable detection framework for industrial infrastructure. Models flag the attack and SHAP and LIME say why.",

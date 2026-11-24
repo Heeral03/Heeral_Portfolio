@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { site, hero, contact } from "@/content/site";
 import { featured, others } from "@/content/projects";
@@ -16,8 +17,8 @@ export default function Home() {
     <>
       {/* Hero */}
       <section className="pt-16 pb-20 md:pt-28 md:pb-28">
-        <div className="wrap grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-          <div>
+        <div className="wrap grid gap-12 grid-cols-[minmax(0,1fr)] lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+          <div className="min-w-0">
             <p className="label mb-5">{hero.eyebrow}</p>
             <h1 className="serif text-[2.6rem] leading-[1.05] sm:text-6xl lg:text-7xl">
               {site.name}
@@ -31,22 +32,27 @@ export default function Home() {
               <a href={site.resume} target="_blank" rel="noopener" className="btn btn-ghost">Download resume</a>
             </div>
           </div>
-          <HeroDemo />
+          <div className="relative w-full min-w-0 lg:max-w-md lg:justify-self-end">
+            <figure className="relative z-10 overflow-hidden rounded-2xl shadow-[0_40px_70px_-30px_rgba(15,23,42,0.45)] ring-1 ring-[var(--line)]">
+              <Image
+                src="/heeral.jpg"
+                alt="Heeral Mandolia standing on a garden walkway with city towers behind her"
+                width={960}
+                height={1280}
+                priority
+                sizes="(min-width: 1024px) 28rem, 80vw"
+                className="h-auto w-full object-cover"
+              />
+            </figure>
+            <div className="relative z-20 -mt-14 ml-4 mr-0 md:-mt-16 md:ml-auto md:mr-[-2rem] md:w-[92%]">
+              <HeroDemo />
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Work */}
-      <Section id="work" index="01" title="Selected work">
-        <Reveal className="mb-6"><ProjectCard p={featured} large /></Reveal>
-        <div className="grid gap-6 md:grid-cols-2">
-          {others.map((p, i) => (
-            <Reveal key={p.slug} delay={(i % 2) * 80}><ProjectCard p={p} /></Reveal>
-          ))}
-        </div>
-      </Section>
-
       {/* Experience */}
-      <Section id="experience" index="02" title="Experience">
+      <Section id="experience" index="01" title="Experience">
         <div className="grid gap-10 md:grid-cols-[0.8fr_1.2fr] md:gap-16">
           <Reveal>
             <p className="label mb-2">{experience.dates}</p>
@@ -90,6 +96,16 @@ export default function Home() {
             </ul>
           </div>
         </Reveal>
+      </Section>
+
+      {/* Work: every project, healthcare and agentic AI first */}
+      <Section id="work" index="02" title="All work">
+        <Reveal className="mb-6"><ProjectCard p={featured} large /></Reveal>
+        <div className="grid gap-6 md:grid-cols-2">
+          {others.map((p, i) => (
+            <Reveal key={p.slug} delay={(i % 2) * 80}><ProjectCard p={p} /></Reveal>
+          ))}
+        </div>
       </Section>
 
       {/* Research */}
